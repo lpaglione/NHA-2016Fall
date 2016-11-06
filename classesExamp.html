@@ -14,9 +14,26 @@
 	}
 
 	class Beverage {
-		constructor(name) {
+		constructor(name, size) {
 			console.log("New Beverage: " + name)
 			this.name = name;
+			this._size = size;
+		}
+
+		set size(size) {
+			this._size = size;
+		}
+
+		get size() {
+			if (this._size == "small"){
+				return 8;
+			}
+			else if (this._size == "medium") {
+				return 16;
+			}
+			else if (this._size == "large") {
+				return 24;
+			}
 		}
 	}
 
@@ -33,19 +50,48 @@
 			else
 				console.log(`${this.name} just ate ${food.name}`)
 		}
+
+		drinkBev(beverage) {
+			if (beverage.constructor.name != "Beverage")
+				console.log(`Sorry, ${beverage.name} is not a beverage.`)
+			else
+				console.log(`${this.name} just drank ${beverage.name}`)
+		}
+
 	}
 
 	class Refrigerator {
 		constructor() {
 			console.log("New Refrigerator")
 			this.items = [];
-			this.itemCounter = 0;
+			this.foodCounter = 0;
+			this.bevCounter = 0;
+			this.otherCounter = 0;
 		}
 
 		addItem(item) {
 			console.log("Adding " + item.name + " to the refrigerator.")
+			// add the item
 			this.items.push(item);
-			this.itemCounter +=1
+
+			//Log the type of item
+			if (item.constructor.name == "Food")
+				this.foodCounter +=1;
+			else if (item.constructor.name == "Beverage")
+				this.bevCounter +=1;
+			else
+				this.otherCounter +=1;
+
+			this.listContentToString();
+			console.log(`FOOD: ${this.foodCounter}; BEVERAGES: ${this.bevCounter}; OTHER: ${this.otherCounter}`)
+		}
+
+		listContentToString() {
+			var stringOutput = "IN THE FRIDGE: ";
+			for (var i = 0; i < this.items.length; i++) {
+				stringOutput += "\n" + this.items[i].name;
+			}
+			console.log(stringOutput);
 		}
 	}
 
@@ -74,21 +120,17 @@
 
 	}
 
-	const pizza = new Food("Pepperoni Pizza")
-	const boss = new Person("Ricky")
+	const pizza = new Food("Pepperoni Pizza");
+	const milk = new Beverage("Milk", "small");
+	const boss = new Person("Ricky");
 	const refrigerator = new Refrigerator();
 
 	refrigerator.addItem(pizza);
+	refrigerator.addItem(milk);
 
-	boss.eatFood(pizza)
+	boss.eatFood(pizza);
+	boss.drinkBev(milk);
 
-	//const eat = (person, food) => {
-	//	if (person.constructor.name != "Person" || food.constructor.name != "Food") {
-	//		console.log (`${person.name} can not eat ${food.name}, silly`);
-	//		return;
-	//	}
-	//	console.log(`${person.name} just ate a ${food.name}`)
-	//}
 
 	</script>
 </head>
