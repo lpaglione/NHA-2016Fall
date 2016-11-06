@@ -1,0 +1,56 @@
+<html>
+<head>
+<script>
+function inArray(array1,array2){
+  //Define the return array
+  var r = [];
+  
+  //Check how many values are in the arrays
+  var n1 = array1.length;
+  var n2 = array2.length;
+
+  //Define my working variables
+  var i1 = 0;
+  var i2;
+  var a1String;
+  var a2String;
+  
+  //Loop through each of the strings in array1
+    while (i1 < n1) {
+    a1String = array1[i1];
+
+    i2 = 0;
+    
+    //Loop through each 
+    while (i2 < n2) {
+      a2String = array2[i2];
+
+      var itsThere = a2String.includes(a1String);
+      
+      if (itsThere) {
+        r.push(a1String);
+        i2 = n2;
+      }
+      else {
+        i2 = i2 +1;
+      }
+    }
+    
+    i1 = i1+1;
+  }
+
+  //Sort the aray in alpha order before returning
+  r.sort();
+  return r;
+}
+
+var a2 = ["lively", "alive", "harp", "sharp", "armstrong"];
+var a1 = ["xyz", "live", "strong"];
+
+var result = inArray(a1, a2);
+alert(result);
+
+</script>
+<body>
+</body>
+</html>

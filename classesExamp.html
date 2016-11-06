@@ -1,0 +1,97 @@
+<!-- State that this is an HTML file --> 
+<!DOCTYPE html>
+
+<!-- HTML element tag -->
+<html>
+<head>
+	<script type="text/javascript">
+	class Food {
+		//initializer - called when the class is first created
+		constructor(name) {
+			console.log("New Food: " + name)
+			this.name = name;
+		}
+	}
+
+	class Beverage {
+		constructor(name) {
+			console.log("New Beverage: " + name)
+			this.name = name;
+		}
+	}
+
+	class Person {
+		//initialize with the name of the person
+		constructor(name) {
+			console.log("New Person: " + name)
+			this.name = name;
+		}
+
+		eatFood(food) {
+			if (food.constructor.name != "Food")
+				console.log(`Sorry, ${food.name} is not a food.`)
+			else
+				console.log(`${this.name} just ate ${food.name}`)
+		}
+	}
+
+	class Refrigerator {
+		constructor() {
+			console.log("New Refrigerator")
+			this.items = [];
+			this.itemCounter = 0;
+		}
+
+		addItem(item) {
+			console.log("Adding " + item.name + " to the refrigerator.")
+			this.items.push(item);
+			this.itemCounter +=1
+		}
+	}
+
+	class Product {
+		//initialize the product
+		constructor(name, price) {
+			console.log("New Product: " + name)
+			this.name = name;
+			this.price = price;
+			this.tags = [];
+			this.stores = [];
+		}
+
+		addStore (storeName) {
+			//adds a store to the store list
+			console.log("Sending " + this.name + " to the store " + storeName)
+			this.stores.push(storeName);
+		}
+
+		addTag (tagName) {
+			//adds a store to the store list
+			console.log("Tagging " + this.name + " with " + tagName)
+
+			this.tags.push(tagName);
+		}
+
+	}
+
+	const pizza = new Food("Pepperoni Pizza")
+	const boss = new Person("Ricky")
+	const refrigerator = new Refrigerator();
+
+	refrigerator.addItem(pizza);
+
+	boss.eatFood(pizza)
+
+	//const eat = (person, food) => {
+	//	if (person.constructor.name != "Person" || food.constructor.name != "Food") {
+	//		console.log (`${person.name} can not eat ${food.name}, silly`);
+	//		return;
+	//	}
+	//	console.log(`${person.name} just ate a ${food.name}`)
+	//}
+
+	</script>
+</head>
+<body>
+</body>
+</html>

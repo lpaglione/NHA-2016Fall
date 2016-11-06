@@ -1,0 +1,52 @@
+<!-- State that this is an HTML file --> 
+<!DOCTYPE html>
+
+<!-- HTML element tag -->
+<html>
+
+<!-- The Head section -->
+<head>
+	<style type="text/css">
+		body {
+			background-color: linen;
+		}
+		h1 {
+			color: blue;
+		}
+	</style>
+
+</head>
+
+<!-- The Body section -->
+<body>
+	<h1>This is my project showcase</h1>
+
+	<p>I love NanoHackers!</p>
+
+	<h1>Week 1 Projects</h1>
+	<h2>Madlibs Game</h2>
+
+	<button onclick="myFunction()">click me for a madlib</button>
+
+	<script type="text/javascript">
+		function myFunction() {
+			var personMe = new Person("Laura");
+			alert(personMe.greet("Sally"));
+
+			alert("welcome to my site!");
+			alert("It's really cool. Right?")
+			var noun1 = prompt("enter a noun");
+			var verb1 = prompt("enter a verb in past tense");
+			alert("Your story: The " + noun1 + " " + verb1)
+		}
+		function Person(name){
+			this.name = name;
+		}
+		Person.prototype.greet = function(otherName){
+			return "Hi " + otherName + ", my name is " + this.name;
+		}
+	</script>
+</body>
+
+<!-- close the HTML element tag -->
+</html>
